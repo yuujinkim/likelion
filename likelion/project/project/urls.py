@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import blog.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # read
+    path('', blog.views.home, name="home"),
+    path('blog/<int:id>', blog.views.detail, name="detail"),
+    # create
+    path('new', blog.views.new, name="new"),
+    path('create', blog.views.create, name="create"),
+    # update
+    path('blog/edit/<int:id>', blog.views.edit, name="edit"),
+    path('blog/update/<int:id>', blog.views.update, name="update"),
+    # delete
+    path('blog/delete/<int:id>', blog.views.delete, name="delete"),
 ]
