@@ -1,0 +1,10 @@
+{% if search_list %}
+    {% for search in search_list %}
+        <h5>{{search.title}}</h5>
+        {{search.created_at}}
+        <p>{{search.summary}}</p>
+    <br />
+    {% endfor %}
+{% else %}
+    검색 결과가 없습니다.
+{% endif %}

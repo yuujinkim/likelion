@@ -1,5 +1,11 @@
 <h1>LikeLion 10th Blog Project</h1>
 <br />
+
+<form method="GET" action="{% url 'search' %}">
+    <input name="search" type="text">
+    <button class="btn btn-primary" type="submit">검색</button>
+</form>
+
 <a href="{%url 'new'%}">새 글 작성하기</a>
 {% for blog in blogs %}
 <div>

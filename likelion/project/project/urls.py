@@ -30,4 +30,6 @@ urlpatterns = [
     path('blog/update/<int:id>', blog.views.update, name="update"),
     # delete
     path('blog/delete/<int:id>', blog.views.delete, name="delete"),
+    # search
+    path('search/', blog.views.search, name="search"),
 ]

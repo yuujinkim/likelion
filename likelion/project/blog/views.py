@@ -1,8 +1,7 @@
 from turtle import title
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Blog
-
-# Create your views here.
+from django.db.models import Q
 
 
 def home(request):
@@ -44,3 +43,14 @@ def delete(request, id):
     delete_blog = get_object_or_404(Blog, pk=id)
     delete_blog.delete()
     return redirect('home')
+
+
+def search(request):
+    blogs = Blog.objects.all()
+    search = request.GET.get('search', '')
+    if search:
+        search_list = blogs.filter(
+            Q(title__icontains=search) |  # 제목
+            Q(content__icontains=search)  # 내용
+        )
+    return render(request, 'search.html', {'search_list': search_list})
